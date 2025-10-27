@@ -3,6 +3,7 @@ import random
 import pandas
 from PySide6 import QtCore, QtWidgets
 
+
 df = pandas.read_csv("data/BeamRepositoryDATA.csv")
 
 class MyWidget(QtWidgets.QWidget):
