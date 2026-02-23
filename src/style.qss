@@ -1,15 +1,44 @@
+
+QGroupBox {
+    border: 3px solid #1976D2;
+    border-radius: 16px;
+    margin-top: 12px;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 8px;
+}
+QGroupBox QLabel {
+    font-weight: bold;
+    font-size: 15px;
+    color: #ffffff;
+}
 QWidget {
     background-color: #001f3f;
     color: #ffffff;
 }
+
 QPushButton {
-    background-color: #003366;
+    font-weight: bold;
     color: #ffffff;
-    border-radius: 5px;
+    border-radius: 8px;
     padding: 6px 12px;
 }
 QPushButton:hover {
-    background-color: #00509e;
+    filter: brightness(1.1);
+}
+
+#CsvButton {
+    background-color: #2196F3;
+}
+#CsvButton:hover {
+    background-color: #1976D2;
+}
+
+#TempButton {
+    background-color: #4CAF50;
+}
+#TempButton:hover {
+    background-color: #388E3C;
 }
 
 QLabel {

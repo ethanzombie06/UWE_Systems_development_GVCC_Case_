@@ -36,5 +36,5 @@ data = {
 
 df = pd.DataFrame(data)
 
-df.to_csv('./data/dummy_parts.csv', index=False)
+df.to_csv('./data/dummy_parts2.csv', index=False)
 print('Generated dummy_parts.csv with', len(df), 'rows. Total count:', df['Count'].sum())

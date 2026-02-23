@@ -18,13 +18,21 @@ class MainWindow(QtWidgets.QMainWindow):
         self.top_bar = self.create_top_bar()
         central_layout.addWidget(self.top_bar)
 
-        # CSV input button with padding
+        # CSV input and temp function buttons
         self.csv_button = QtWidgets.QPushButton("Load CSV File")
+        self.csv_button.setObjectName("CsvButton")
+        self.csv_button.setFixedHeight(40)
         self.csv_button.clicked.connect(self.load_csv)
+        self.temp_button = QtWidgets.QPushButton("Run Temp Function")
+        self.temp_button.setObjectName("TempButton")
+        self.temp_button.setFixedHeight(40)
+        self.temp_button.setEnabled(False)
+        self.temp_button.clicked.connect(self.run_temp_function)
         button_container = QtWidgets.QWidget()
         button_layout = QtWidgets.QHBoxLayout(button_container)
         button_layout.setContentsMargins(20, 20, 20, 0)
-        button_layout.addWidget(self.csv_button)
+        button_layout.addWidget(self.csv_button, stretch=1)
+        button_layout.addWidget(self.temp_button)
         central_layout.addWidget(button_container)
 
         # File info boxes
@@ -37,6 +45,20 @@ class MainWindow(QtWidgets.QMainWindow):
 
         central_layout.addStretch()
         self.setCentralWidget(central_widget)
+
+    def run_temp_function(self):
+        # Example temp function: show first 5 rows in a dialog
+        if hasattr(self, 'loaded_df'):
+            temp_result = self.loaded_df.head().to_string()
+            msg_box = QtWidgets.QMessageBox(self)
+            msg_box.setWindowTitle("Temp Function Result")
+            msg_box.setText(temp_result)
+            msg_box.exec()
+        else:
+            msg_box = QtWidgets.QMessageBox(self)
+            msg_box.setWindowTitle("Temp Function Result")
+            msg_box.setText("No data loaded.")
+            msg_box.exec()
 
     def create_top_bar(self):
         bar = QtWidgets.QWidget()
